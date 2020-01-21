@@ -23,7 +23,7 @@ $./download.sh
 ```
 
 ## Usage example
-
+Click on the play button to see an example download.
 [![asciicast](https://asciinema.org/a/ikO5IB3CDkYeyBlN1E7Hc4dsi.png)](https://asciinema.org/a/ikO5IB3CDkYeyBlN1E7Hc4dsi?speed=2&preload=1)
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
