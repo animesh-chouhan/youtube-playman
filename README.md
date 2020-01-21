@@ -28,6 +28,7 @@ Click on the play button to see an example download.
 <a href="https://asciinema.org/a/ikO5IB3CDkYeyBlN1E7Hc4dsi?speed=2&preload=1&autoplay=1">
   <img src="https://asciinema.org/a/ikO5IB3CDkYeyBlN1E7Hc4dsi.png" width="800"/>
 </a>
+
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
 
