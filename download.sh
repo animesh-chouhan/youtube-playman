@@ -12,9 +12,9 @@ yt_downloader () {
 	TARGET="$HOME/Music/$NAME"
 
 	#Creating required folders
-	if [ ! -d {$TARGET} ]; then
+	if [ ! -d $TARGET ]; then
 		mkdir $TARGET
-		mkdir "$TARGET/Music" "$TARGET/Music" "$TARGET/Description"\
+		mkdir "$TARGET/Music" "$TARGET/Description"\
 		      "$TARGET/Json" "$TARGET/Thumbnails"
 	fi
 
@@ -72,7 +72,7 @@ if [ ! -f $FILE ]; then
 	touch $FILE
 else
 	printf "\nPlaylist record found\n"
-	while IFS=,, read -r n u
+	while IFS=';' read -r n u
 	do
 		playlist_name+=( $n )
 		playlist_url+=( $u )
@@ -102,7 +102,7 @@ then
 	read enter_name
 	echo "Enter playlist url:"
 	read enter_url
-	printf "%s,,%s\n" "$enter_name" "$enter_url" >> $FILE
+	printf "%s;%s\n" "$enter_name" "$enter_url" >> $FILE
 	yt_downloader "$enter_name" "$enter_url"
 	exit 1
 fi
@@ -111,5 +111,3 @@ NAME="${playlist_name[$((OPTION-1))]}"
 URL="${playlist_url[$((OPTION-1))]}"
 
 yt_downloader "$NAME" "$URL"
-
-
