@@ -2,4 +2,5 @@ theme: jekyll-theme-slate
 google_analytics: UA-156551368-1
 
 title: youtube playman
+description: Youuube Playlist Manager 
 show_downloads: true
