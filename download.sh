@@ -18,7 +18,7 @@ yt_downloader () {
 		      "$TARGET/Json" "$TARGET/Thumbnails"
 	fi
 
-	echo "Downloading..."
+	printf "Downloading %s...\n" "$NAME"
 	$YTDL\
 	 --newline\
 	 -i -x\
@@ -35,31 +35,46 @@ yt_downloader () {
 	 --download-archive "$TARGET/$NAME.txt"\
 	 $URL > "$TARGET/log.txt"
 
-	mv $TARGET/Music/*.jpg         $TARGET/Thumbnails/
-	mv $TARGET/Music/*.description $TARGET/Description/
-	mv $TARGET/Music/*.json        $TARGET/Json/
+	#Moving thumbnails and description
+	count=`ls -1 *.json 2>/dev/null | wc -l`
+	if [ $count != 0 ]
+	then 
+		mv $TARGET/Music/*.jpg         $TARGET/Thumbnails/
+		mv $TARGET/Music/*.description $TARGET/Description/
+		mv $TARGET/Music/*.json        $TARGET/Js
+	fi 
+
+	printf "Done downloading %s.\n" "$NAME"
 }
 
-#Installing ffmpeg
-if [ ! hash ffmpeg 2>/dev/null ]; then
-        echo "ffmpeg or avconv not found"
-	echo "Installing..."
-	sudo apt-get install ffmpeg
-else
-	echo "ffmpeg found"
-fi
+download_and_update() {
+	#Installing ffmpeg
+	if [ ! hash ffmpeg 2>/dev/null ]; then
+	        echo "ffmpeg or avconv not found"
+		echo "Installing..."
+		sudo apt-get install ffmpeg
+	else
+		:
+		#echo "ffmpeg found"
+	fi
 
-#Installing youtube-dl
-if [ ! -f $YTDL ]; then
-	wget "https://yt-dl.org/latest/youtube-dl" -O $YTDL
-	chmod a+x $YTDL
-#else
-	#Updating youtube-dl
-	#echo "Checking for updates..."
-	#$YTDL -U	
-fi
+	#Installing youtube-dl
+	if [ ! -f $YTDL ]; then
+		wget "https://yt-dl.org/latest/youtube-dl" -O $YTDL
+		chmod a+x $YTDL
+	else
+		#Updating youtube-dl
+		echo "Checking for updates..."
+		$YTDL -U
+	fi
+}
 
+#########################################################################
+#Main function
+#########################################################################
 
+#Download and update required binaries
+download_and_update
 
 #Storage array
 declare -a playlist_name
@@ -71,7 +86,7 @@ if [ ! -f $FILE ]; then
 	echo "Creating..."
 	touch $FILE
 else
-	printf "\nPlaylist record found\n"
+	printf "Playlist record found\n"
 	while IFS=';' read -r n u
 	do
 		playlist_name+=( $n )
@@ -79,34 +94,52 @@ else
 	done < $FILE
 fi
 
-printf "Please enter your choice: \n"
+printf "\nPlease enter your choice: \n"
+
 #Listing the playlists
 for i in "${!playlist_name[@]}"
 do
 	printf "%d.%s\n" "$(($i+1))" "${playlist_name[$i]}"
 done
 
+#Get the counter
+counter=i
+
 #Other options
-printf "%d.Add a playlist\n" "$(($i+2))"
-printf "%d.Exit\n" "$(($i+3))"
+printf "%d.Update all playlists\n" "$(($counter+2))"
+printf "%d.Add a playlist\n" "$(($counter+3))"
+printf "%d.Exit\n" "$(($counter+4))"
 
 #Set the variables
 read OPTION
-if [ "$OPTION" == "$(($i+3))" ]
+if [ "$OPTION" == "$(($counter+4))" ]
 then
 	exit 1
-elif [ "$OPTION" == "$(($i+2))" ]
+
+elif [ "$OPTION" == "$(($counter+3))" ]
 then
-	echo "#Note: Don't use spaces or special charaters"
+	#echo "#Note: Don't use spaces or special characters"
 	echo "Enter playlist name:"
 	read enter_name
 	echo "Enter playlist url:"
 	read enter_url
-	printf "%s;%s\n" "$enter_name" "$enter_url" >> $FILE
-	yt_downloader "$enter_name" "$enter_url"
+	name_formatted=${enter_name// /-}
+	printf "%s;%s\n" "$name_formatted" "$enter_url" >> $FILE
+	yt_downloader "$name_formatted" "$enter_url"
+	exit 1
+
+elif [ "$OPTION" == "$(($counter+2))" ]
+then
+	for i in "${!playlist_name[@]}"
+	do
+		NAME="${playlist_name[$i]}"
+		URL="${playlist_url[$i]}"
+		yt_downloader "$NAME" "$URL"
+	done
 	exit 1
 fi
 
+#Update single playlist
 NAME="${playlist_name[$((OPTION-1))]}"
 URL="${playlist_url[$((OPTION-1))]}"
 
