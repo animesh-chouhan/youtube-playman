@@ -38,11 +38,11 @@ yt_downloader () {
 	#Moving thumbnails and description
 	count=`ls -1 *.json 2>/dev/null | wc -l`
 	if [ $count != 0 ]
-	then 
+	then
 		mv $TARGET/Music/*.jpg         $TARGET/Thumbnails/
 		mv $TARGET/Music/*.description $TARGET/Description/
 		mv $TARGET/Music/*.json        $TARGET/Js
-	fi 
+	fi
 
 	printf "Done downloading %s.\n" "$NAME"
 }
@@ -128,7 +128,7 @@ then
 	yt_downloader "$name_formatted" "$enter_url"
 	exit 1
 
-elif [ "$OPTION" == "$(($counter+2))" ]
+elif [ "$OPTION" == "all" ] || [ "$OPTION" == "$(($counter+2))" ]
 then
 	for i in "${!playlist_name[@]}"
 	do
