@@ -1,7 +1,11 @@
 #!/bin/bash
 
+#Location of youtube-dl binary
 YTDL="$HOME/.local/bin/youtube-dl"
-FILE="$HOME/Music/playlists.txt"
+
+#Location of download target
+DOWN="$HOME/Music/"
+FILE="${DOWN}playlists.txt"
 
 
 yt_downloader () {
@@ -9,7 +13,7 @@ yt_downloader () {
 	URL="$2"
 
 	#Target folder
-	TARGET="$HOME/Music/$NAME"
+	TARGET="${DOWN}/${NAME}"
 
 	#Creating required folders
 	if [ ! -d $TARGET ]; then
@@ -32,7 +36,7 @@ yt_downloader () {
 	 --write-all-thumbnails\
 	 --write-info-json\
 	 --write-description\
-	 --download-archive "$TARGET/$NAME.txt"\
+	 --download-archive "${TARGET}/${NAME}-archive.txt"\
 	 $URL > "$TARGET/log.txt"
 
 	#Moving thumbnails and description
@@ -118,7 +122,6 @@ then
 
 elif [ "$OPTION" == "$(($counter+3))" ]
 then
-	#echo "#Note: Don't use spaces or special characters"
 	echo "Enter playlist name:"
 	read enter_name
 	echo "Enter playlist url:"
@@ -128,7 +131,7 @@ then
 	yt_downloader "$name_formatted" "$enter_url"
 	exit 1
 
-elif [ "$OPTION" == "all" ] || [ "$OPTION" == "$(($counter+2))" ]
+elif [ "$OPTION" == "update-all" ] || [ "$OPTION" == "$(($counter+2))" ]
 then
 	for i in "${!playlist_name[@]}"
 	do
