@@ -3,9 +3,9 @@
 ![](https://img.shields.io/badge/platforms-linux--64-lightgrey.svg)
 ![license][license]
 
->YouTube music playlist manager
+>Downloads and updates local copies of YouTube Playlists 
 
->Downloads and updates  local copies of YouTube Playlists 
+>A simple yet powerful script to download and manage local copies of youtube music playlists
 
 ## Setup
 
