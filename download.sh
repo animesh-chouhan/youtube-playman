@@ -16,7 +16,7 @@ yt_downloader () {
 	TARGET="${DOWN}/${NAME}"
 
 	#Creating required folders
-	if [ ! -d $TARGET ]; then
+	if [ ! -d "$TARGET" ]; then
 		mkdir $TARGET
 		mkdir "$TARGET/Music" "$TARGET/Description"\
 		      "$TARGET/Json" "$TARGET/Thumbnails"
@@ -40,12 +40,13 @@ yt_downloader () {
 	 $URL > "$TARGET/log.txt"
 
 	#Moving thumbnails and description
-	count=`ls -1 *.json 2>/dev/null | wc -l`
-	if [ $count != 0 ]
+	cd "$TARGET/Music"
+	count=`/usr/bin/ls -1 *.json 2>/dev/null | /usr/bin/wc -l`
+	if [ "$count" != 0 ]
 	then
-		mv $TARGET/Music/*.jpg         $TARGET/Thumbnails/
-		mv $TARGET/Music/*.description $TARGET/Description/
-		mv $TARGET/Music/*.json        $TARGET/Js
+		/usr/bin/mv $TARGET/Music/*.jpg         $TARGET/Thumbnails/
+		/usr/bin/mv $TARGET/Music/*.description $TARGET/Description/
+		/usr/bin/mv $TARGET/Music/*.json        $TARGET/Json/
 	fi
 
 	printf "Done downloading %s.\n" "$NAME"
@@ -63,7 +64,7 @@ download_and_update() {
 	fi
 
 	#Installing youtube-dl
-	if [ ! -f $YTDL ]; then
+	if [ ! -f "$YTDL" ]; then
 		wget "https://yt-dl.org/latest/youtube-dl" -O $YTDL
 		chmod a+x $YTDL
 	else
@@ -107,7 +108,7 @@ do
 done
 
 #Get the counter
-counter=i
+counter=$i
 
 #Other options
 printf "%d.Update all playlists\n" "$(($counter+2))"
