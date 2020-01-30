@@ -43,7 +43,7 @@ $crontab -e
 #this will open a editor and add this entry to the file
 #don't forget the newline after the last entry
 
-PATH="/usr/local/bin:/usr/bin:/bin:/home/animesh/.local/bin"
+PATH="/usr/local/bin:/usr/bin:/bin:/home/<YOUR-USERNAME>/.local/bin"
 @daily printf "update-all" | download
 
 ```
