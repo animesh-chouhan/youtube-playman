@@ -41,7 +41,11 @@ Add Jobs To cron:
 $crontab -e
 
 #this will open a editor and add this entry to the file
+#don't forget the newline after the last entry
+
+PATH="/usr/local/bin:/usr/bin:/bin:/home/<YOUR-USERNAME>/.local/bin"
 @daily printf "update-all" | download
+
 ```
 For more details refer to [ubuntu cron wiki](https://help.ubuntu.com/community/CronHowto).
 
