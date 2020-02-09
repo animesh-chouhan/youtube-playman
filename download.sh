@@ -26,7 +26,7 @@ yt_downloader () {
 	$YTDL\
 	 --newline\
 	 -i -x\
-	 -o "$TARGET/Music/%(title)s.%(ext)s"\
+	 -o "$TARGET/Music/%(title)s-%(uploader)s.%(ext)s"\
 	 --audio-format mp3\
 	 --audio-quality 0\
 	 --ignore-config\
