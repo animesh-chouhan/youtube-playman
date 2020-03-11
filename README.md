@@ -1,7 +1,7 @@
 # youtube-playman
 
-![](https://img.shields.io/badge/platforms-linux--64-lightgrey.svg)
-![license][license]
+![.](https://img.shields.io/badge/platforms-linux--64-lightgrey.svg)
+![license](https://img.shields.io/github/license/animesh-chouhan/youtube-playman)
 
 >Downloads and updates local copies of YouTube Playlists 
 
