@@ -73,7 +73,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-[license]: https://img.shields.io/github/license/animesh-chouhan/yt-comment-scraper.svg?style=plastic
+[license]: https://img.shields.io/github/license/animesh-chouhan/youtube-playman
 [wiki]: https://github.com/animesh-chouhan/youtube-playman/wiki
 
 ## License
