@@ -1,3 +1,5 @@
 /assets/asciinema/295164.cast.private
 web_interface/.venv/*
+python_swagger_ui/.venv/*
 web_interface/.vscode/settings.json
+web_interface/__pycache__/*
