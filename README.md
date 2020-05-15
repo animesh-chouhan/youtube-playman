@@ -1,7 +1,7 @@
 # youtube-playman
 
-![](https://img.shields.io/badge/platforms-linux--64-lightgrey.svg)
-![license][license]
+![.](https://img.shields.io/badge/platforms-linux--64-lightgrey.svg)
+![license](https://img.shields.io/github/license/animesh-chouhan/youtube-playman)
 
 >Downloads and updates local copies of YouTube Playlists 
 
@@ -73,7 +73,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-[license]: https://img.shields.io/github/license/animesh-chouhan/yt-comment-scraper.svg?style=plastic
+[license]: https://img.shields.io/github/license/animesh-chouhan/youtube-playman
 [wiki]: https://github.com/animesh-chouhan/youtube-playman/wiki
 
 ## License
