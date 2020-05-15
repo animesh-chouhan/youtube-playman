@@ -1,1 +1,3 @@
 /assets/asciinema/295164.cast.private
+web_interface/.venv/*
+web_interface/.vscode/settings.json
