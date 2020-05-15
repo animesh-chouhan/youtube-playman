@@ -42,5 +42,5 @@ To run the server on a Docker container, please execute the following from the r
 docker build --pull --rm -f "Dockerfile" -t webinterface:latest "."
 
 # starting up a container
-docker run -p 8000:8000 swagger_server
+docker run -p 8000:8000 webinterface:latest
 ```
