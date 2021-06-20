@@ -9,32 +9,42 @@
 
 ## Setup
 
-### Linux:
-
-Cloning the repository:
+### Cloning the repository:
 ```sh
 #clone the repo
 $git clone https://github.com/animesh-chouhan/yt-comment-scraper.git
 $cd youtube-playman
 ```
-Running the script:
+### Running the script:
 
 ```sh
 #run the script directly
-$chmod +x ./download.sh
-$./download.sh
+$chmod +x ./youtube-playman.sh
+$./youtube-playman.sh
 
 OR
 
 #create a hard link to the local binary folder
 #this will add the downloader to the path variable 
-$ln ./download.sh ~/.local/bin/download
+$ln ./youtube-playman.sh ~/.local/bin/youtube-playman
 
 #directly running the script
-$download
+$youtube-playman
 
 ```
-Add Jobs To cron:
+### Installation:
+
+To install it right away for all UNIX users (Linux, macOS, etc.), type:
+
+    sudo curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o /usr/local/bin/youtube-playman
+    sudo chmod a+rx /usr/local/bin/youtube-playman
+
+If you do not have curl, you can alternatively use a recent wget:
+
+    sudo wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O /usr/local/bin/youtube-playman
+    sudo chmod a+rx /usr/local/bin/youtube-playman
+
+### Add Jobs To cron:
 
 ```sh
 #creating a cron job that will update the playlists automatically
@@ -44,7 +54,7 @@ $crontab -e
 #don't forget the newline after the last entry
 
 PATH="/usr/local/bin:/usr/bin:/bin:/home/<YOUR-USERNAME>/.local/bin"
-@daily printf "update-all" | download
+@daily printf "update-all" | youtube-playman
 
 ```
 For more details refer to [ubuntu cron wiki](https://help.ubuntu.com/community/CronHowto).
