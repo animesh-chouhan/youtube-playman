@@ -36,13 +36,13 @@ $youtube-playman
 
 To install it right away for all UNIX users (Linux, macOS, etc.), type:
 
-    sudo curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o /usr/local/bin/youtube-playman
-    sudo chmod a+rx /usr/local/bin/youtube-playman
+    curl -L https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -o ~/.local/bin/youtube-playman
+    chmod a+rx ~/.local/bin/youtube-playman
 
 If you do not have curl, you can alternatively use a recent wget:
 
-    sudo wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O /usr/local/bin/youtube-playman
-    sudo chmod a+rx /usr/local/bin/youtube-playman
+    wget https://github.com/animesh-chouhan/youtube-playman/releases/latest/download/youtube-playman -O ~/.local/bin/youtube-playman
+    chmod a+rx ~/.local/bin/youtube-playman
 
 ### Add Jobs To cron:
 
