@@ -56,6 +56,10 @@ $crontab -e
 PATH="/usr/local/bin:/usr/bin:/bin:/home/<YOUR-USERNAME>/.local/bin"
 @daily printf "update-all" | youtube-playman
 
+#OR
+
+@daily printf "update-all" | download > /home/animesh/Music/cron.log 2>&1;echo `date` >> /home/animesh/Music/cron.log
+
 ```
 For more details refer to [ubuntu cron wiki](https://help.ubuntu.com/community/CronHowto).
 
