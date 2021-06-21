@@ -5,6 +5,10 @@ YTDL="$HOME/.local/bin/youtube-dl"
 
 #Location of download target
 DOWN="$HOME/Music/"
+if [ ! -d "$DOWN" ]; then
+	echo "Creating Music folder..."
+	mkdir $DOWN
+fi
 FILE="${DOWN}playlists.txt"
 
 
