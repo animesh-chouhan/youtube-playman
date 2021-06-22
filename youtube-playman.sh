@@ -58,8 +58,8 @@ yt_downloader () {
 
 download_and_update() {
 	#Installing ffmpeg
-	if [ ! hash ffmpeg 2>/dev/null ]; then
-	        echo "ffmpeg or avconv not found"
+	if ! hash ffmpeg 2>/dev/null ; then
+	        echo "ffmpeg not found"
 		echo "Installing..."
 		sudo apt-get install ffmpeg
 	else
