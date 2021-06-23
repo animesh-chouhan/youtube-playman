@@ -54,12 +54,13 @@ crontab -e
 #this will open a editor and add this entry to the file
 #don't forget the newline after the last entry
 
-PATH="/usr/local/bin:/usr/bin:/bin:~/.local/bin"
+PATH="/usr/local/bin:/usr/bin:/bin:/home/<your-username>/.local/bin"
 @daily printf "update-all" | youtube-playman
 
 #OR
 
-@daily printf "update-all" | download > /home/animesh/Music/cron.log 2>&1;echo `date` >> /home/animesh/Music/cron.log
+PATH="/usr/local/bin:/usr/bin:/bin:/home/<your-username>/.local/bin"
+@daily printf "update-all" | download > $HOME/Music/cron.log 2>&1;echo `date` >> $HOME/Music/cron.log
 
 ```
 For more details refer to [ubuntu cron wiki](https://help.ubuntu.com/community/CronHowto).
@@ -94,4 +95,3 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 ## License
 MIT License
 copyright (c) 2020 [Animesh Singh Chouhan](https://github.com/animesh-chouhan). Please have a look at the [license](LICENSE) for more details.
-
